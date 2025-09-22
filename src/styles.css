@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0a;
+  --fg: #111111;
+  --text: #0f0f10;
+  --muted: #5a5a5a;
+}
+
+html, body {
+  scroll-behavior: smooth;
+}

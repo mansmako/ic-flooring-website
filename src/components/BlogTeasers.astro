@@ -1,0 +1,15 @@
+<section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+  <h2 class="text-2xl md:text-3xl font-bold">From Our Blog</h2>
+  <div class="mt-8 grid gap-6 md:grid-cols-3">
+    {[
+      {title: "Epoxy vs PU: Which to choose?", href: "/blog/epoxy-vs-pu"},
+      {title: "Concrete prep 101", href: "/blog/concrete-prep"},
+      {title: "HACCP flooring for food plants", href: "/blog/haccp-flooring"}
+    ].map(p => (
+      <a href={p.href} class="p-6 rounded-2xl border border-neutral-200 hover:shadow-soft transition block">
+        <div class="font-semibold">{p.title}</div>
+        <div class="mt-2 text-sm text-neutral-600">Read more →</div>
+      </a>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,24 @@
+{
+  "name": "ic-flooring-site",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "IC Flooring — Industrial & Commercial Flooring (static site)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "@swc/helpers": "^0.5.17",
+    "astro": "^5.13.10",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.10",
+    "tslib": "^2.8.1"
+  }
+}

@@ -1,0 +1,36 @@
+---
+const nav = [
+  { href: "/#services", label: "Services" },
+  { href: "/#process", label: "Our Process" },
+  { href: "/#callout", label: "Call-out Fee" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+];
+---
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-200">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="font-semibold tracking-tight text-lg">IC Flooring</a>
+    <nav class="hidden md:flex items-center gap-6">
+      {nav.map(item => (
+        <a href={item.href} class="text-sm text-neutral-700 hover:text-black transition">{item.label}</a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href="/quote" class="hidden sm:inline-flex px-4 py-2 rounded-full bg-brand-red text-white text-sm font-medium shadow-soft hover:opacity-95 transition">Get a Quote</a>
+      <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center w-8 h-8 rounded-full border border-neutral-300">☰</button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="md:hidden hidden border-t border-neutral-200 bg-white">
+    <div class="px-4 py-3 flex flex-col gap-2">
+      {nav.map(item => (
+        <a href={item.href} class="text-sm text-neutral-700 py-1">{item.label}</a>
+      ))}
+      <a href="/quote" class="mt-2 inline-flex px-4 py-2 rounded-full bg-brand-red text-white text-sm font-medium">Get a Quote</a>
+    </div>
+  </div>
+  <script is:inline>
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  </script>
+</header>

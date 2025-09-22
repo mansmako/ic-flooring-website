@@ -1,0 +1,26 @@
+<section class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-16">
+  <h1 class="text-3xl font-bold">Request a Quote</h1>
+  <p class="mt-2 text-neutral-600 text-sm">Complete the form and we’ll respond within 1 business day.</p>
+  <form class="mt-8 space-y-4" method="POST" action="" data-formspree="REPLACE_WITH_FORM_ENDPOINT">
+    <div class="grid md:grid-cols-2 gap-4">
+      <input required name="name" placeholder="Full Name" class="w-full border border-neutral-300 rounded-xl px-4 py-3" />
+      <input required type="email" name="email" placeholder="Email" class="w-full border border-neutral-300 rounded-xl px-4 py-3" />
+    </div>
+    <input name="phone" placeholder="Phone (optional)" class="w-full border border-neutral-300 rounded-xl px-4 py-3" />
+    <input name="location" placeholder="Site Location" class="w-full border border-neutral-300 rounded-xl px-4 py-3" />
+    <select name="service" class="w-full border border-neutral-300 rounded-xl px-4 py-3">
+      <option>Epoxy</option>
+      <option>Polyurethane</option>
+      <option>Polished Concrete</option>
+      <option>Not sure – advise me</option>
+    </select>
+    <textarea name="details" placeholder="Briefly describe your project..." rows="5" class="w-full border border-neutral-300 rounded-xl px-4 py-3"></textarea>
+
+    <div class="flex items-center gap-3 pt-2">
+      <button type="submit" class="px-5 py-3 rounded-full bg-brand-red text-white font-medium shadow-soft">Send Request</button>
+      <a href="mailto:ceo@icflooring.co.za?subject=Quote%20request%20from%20website" class="text-sm underline">or email us directly</a>
+    </div>
+
+    <p class="text-xs text-neutral-500">Note: For a static host, connect this to Formspree/Netlify Forms or handle via mailto. Replace <code>data-formspree</code> with your endpoint.</p>
+  </form>
+</section>

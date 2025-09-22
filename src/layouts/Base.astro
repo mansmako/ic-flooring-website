@@ -1,0 +1,27 @@
+---
+const { title = "IC Flooring — Industrial & Commercial Flooring", description = "Epoxy, polyurethane and polished concrete flooring. Request a quote today.", showChat=true } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="application-name" content="IC Flooring" />
+    <meta property="og:site_name" content="IC Flooring" />
+    <meta property="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/ic-flooring-192.png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="bg-white text-neutral-900 antialiased">
+    <slot name="header" />
+    <main>
+      <slot />
+    </main>
+    <slot name="footer" />
+    {showChat && <script src="/chatbot.js" defer></script>}
+  </body>
+</html>

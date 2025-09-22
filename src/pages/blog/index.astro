@@ -1,0 +1,17 @@
+---
+import Base from "@/layouts/Base.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+<Base title="Blog — IC Flooring">
+  <Header slot="header" />
+  <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-3xl font-bold">Blog</h1>
+    <ul class="mt-6 space-y-2 text-brand-red">
+      <li><a class="hover:underline" href="/blog/epoxy-vs-pu">Epoxy vs PU: Which to choose?</a></li>
+      <li><a class="hover:underline" href="/blog/concrete-prep">Concrete prep 101</a></li>
+      <li><a class="hover:underline" href="/blog/haccp-flooring">HACCP flooring for food plants</a></li>
+    </ul>
+  </section>
+  <Footer slot="footer" />
+</Base>

@@ -1,0 +1,22 @@
+---
+const projects = [
+  { title: "Warehouse Epoxy (12,000 m²)", sector: "Logistics", year: "2025" },
+  { title: "Retail PU System (2,400 m²)", sector: "Retail", year: "2024" },
+  { title: "Food Processing Floor (3,100 m²)", sector: "Manufacturing", year: "2024" },
+  { title: "Workshop Polished Concrete", sector: "Automotive", year: "2025" },
+];
+---
+<section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+  <h2 class="text-2xl md:text-3xl font-bold">Projects</h2>
+  <div class="mt-8 grid gap-6 md:grid-cols-3">
+    {projects.map(p => (
+      <div class="rounded-2xl border border-neutral-200 overflow-hidden hover:shadow-soft transition">
+        <div class="aspect-[4/3] bg-[linear-gradient(120deg,#e8e8e8,#f6f6f6)] grid place-items-center text-neutral-500 text-sm">Replace with project photo</div>
+        <div class="p-4">
+          <div class="font-semibold">{p.title}</div>
+          <div class="text-xs text-neutral-600 mt-1">{p.sector} • {p.year}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
