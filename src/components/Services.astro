@@ -1,19 +1,81 @@
-<section id="services" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-  <div class="flex items-end justify-between">
-    <h2 class="text-2xl md:text-3xl font-bold">Services</h2>
-    <a href="/quote" class="hidden md:inline text-sm underline">Request a quote</a>
+<!-- OUTER WRAPPER: full-bleed background (image 8) + dark fade -->
+<div class="relative overflow-hidden">
+  <!-- Background (slight blur + dark gradient, spans full width) -->
+  <div class="absolute inset-0 -z-10">
+    <div
+      class="absolute inset-0 bg-cover bg-center scale-[1.06]"
+      style="background-image:url('/images/projects/ic-flooring-website%20(8).jpg'); filter: blur(1px);"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/30"></div>
   </div>
-  <div class="mt-8 grid gap-6 md:grid-cols-3">
-    {['Epoxy Flooring', 'Polyurethane Flooring', 'Polished Concrete'].map((svc) => (
-      <div class="p-6 rounded-2xl border border-neutral-200 hover:shadow-soft transition">
-        <div class="font-semibold">{svc}</div>
-        <p class="mt-2 text-sm text-neutral-600">Durable, chemical-resistant systems for industrial and commercial applications.</p>
-        <ul class="mt-4 text-sm text-neutral-700 list-disc list-inside space-y-1">
-          <li>Site prep & substrate repair</li>
-          <li>System specification</li>
-          <li>Installation & QA</li>
-        </ul>
-      </div>
-    ))}
-  </div>
-</section>
+
+  <!-- YOUR ORIGINAL SECTION -->
+  <section id="services" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+    <div class="flex items-end justify-between">
+      <h2 class="text-2xl md:text-3xl font-bold text-white">Professional Flooring Services</h2>
+      <a href="/quote" class="hidden md:inline text-sm underline text-white">Request a quote</a>
+    </div>
+    <a href="/quote" class="mt-2 inline md:hidden text-sm underline text-white">Request a quote</a>
+
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      {[
+        {
+          title: "Real Wood Flooring",
+          desc: "Solid & engineered oak and walnut floors for a premium, timeless finish.",
+          points: ["Solid & engineered options", "Oiled or lacquered finishes", "Pre-finished or site-finished"]
+        },
+        {
+          title: "Laminate Flooring",
+          desc: "Commercial & residential grade laminates with authentic textures and formats.",
+          points: ["AC3–AC5 wear ratings", "4V bevel & widebody options", "Herringbone layouts available"]
+        },
+        {
+          title: "Vinyl Flooring (LVT/LVP & SPC)",
+          desc: "Water-resistant vinyl planks/tiles ideal for kitchens, retail and high-traffic areas.",
+          points: ["Waterproof options", "Low maintenance", "Underlay & acoustic choices"]
+        },
+        {
+          title: "Subfloor Prep & Levelling",
+          desc: "Grinding, patching and screeding to deliver a smooth, stable base.",
+          points: ["Moisture testing", "Crack & joint repairs", "Feather finish or full screed"]
+        },
+        {
+          title: "Repairs & Re-fits",
+          desc: "Replace damaged boards/tiles, fix lifting edges, renew trims and transitions.",
+          points: ["Colour/texture matching", "Minimal downtime", "Neat, durable finishes"]
+        },
+        {
+          title: "Skirting, Trims & Finishing",
+          desc: "Cubic skirting, door bars and stair nosings for clean edges and safety.",
+          points: ["PVC/Aluminium options", "Hide expansion gaps", "Professional edge details"]
+        }
+      ].map((s) => (
+        <div
+          class="p-6 rounded-2xl border bg-white/10 backdrop-blur-md backdrop-saturate-150
+                 border-white/20 h-full
+                 text-white font-semibold
+                 transition
+                 hover:ring-2 hover:ring-white/60
+                 hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]"
+        >
+          <div class="font-bold">{s.title}</div>
+          <p class="mt-2 text-sm">{s.desc}</p>
+          <ul class="mt-4 text-sm list-disc list-inside space-y-1">
+            {s.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Helper note → glass too -->
+    <div
+      class="mt-10 rounded-xl border bg-white/10 backdrop-blur-md backdrop-saturate-150
+             border-white/20 p-4 sm:p-5 text-white font-semibold
+             transition hover:ring-2 hover:ring-white/60 hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]"
+    >
+      <p class="text-sm">
+        Want to visualise floors in your space? Ask us for a <strong>Floor Visualiser</strong> link from our suppliers (e.g. Firmfit, Finfloor, Traviata) to preview styles in your room.
+      </p>
+    </div>
+  </section>
+</div>

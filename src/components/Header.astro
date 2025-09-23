@@ -1,36 +1,97 @@
 ---
 const nav = [
   { href: "/#services", label: "Services" },
-  { href: "/#process", label: "Our Process" },
-  { href: "/#callout", label: "Call-out Fee" },
+  { href: "/#process", label: "Process" },
+  { href: "/site-visit", label: "Site Visit" },
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
 ];
 ---
-<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-200">
+
+<header id="siteHeader" class="sticky top-0 z-50 border-b transition-colors duration-300 bg-white/80 backdrop-blur-md border-neutral-200">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <a href="/" class="font-semibold tracking-tight text-lg">IC Flooring</a>
-    <nav class="hidden md:flex items-center gap-6">
-      {nav.map(item => (
-        <a href={item.href} class="text-sm text-neutral-700 hover:text-black transition">{item.label}</a>
+    <a href="/" class="font-semibold tracking-tight text-lg siteBrand">IC Flooring</a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-3">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class="nav-pill inline-flex items-center px-3 py-1.5 rounded-full border transition
+                 hover:shadow-[0_6px_22px_rgba(0,0,0,0.35)]"
+        >
+          {item.label}
+        </a>
       ))}
     </nav>
-    <div class="flex items-center gap-4">
-      <a href="/quote" class="hidden sm:inline-flex px-4 py-2 rounded-full bg-brand-red text-white text-sm font-medium shadow-soft hover:opacity-95 transition">Get a Quote</a>
-      <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center w-8 h-8 rounded-full border border-neutral-300">☰</button>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="/site-visit"
+        class="nav-pill hidden sm:inline-flex px-4 py-2 rounded-full border font-medium transition
+               hover:shadow-[0_6px_22px_rgba(0,0,0,0.35)]"
+      >
+        Book a Visit
+      </a>
+      <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border">☰</button>
     </div>
   </div>
-  <div id="mobileMenu" class="md:hidden hidden border-t border-neutral-200 bg-white">
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="md:hidden hidden border-t">
     <div class="px-4 py-3 flex flex-col gap-2">
-      {nav.map(item => (
-        <a href={item.href} class="text-sm text-neutral-700 py-1">{item.label}</a>
+      {nav.map((item) => (
+        <a href={item.href} class="nav-pill block px-3 py-2 rounded-full border transition
+                                   hover:shadow-[0_6px_22px_rgba(0,0,0,0.35)]">
+          {item.label}
+        </a>
       ))}
-      <a href="/quote" class="mt-2 inline-flex px-4 py-2 rounded-full bg-brand-red text-white text-sm font-medium">Get a Quote</a>
+      <a href="/site-visit" class="nav-pill mt-2 inline-flex px-4 py-2 rounded-full border font-medium transition
+                                   hover:shadow-[0_6px_22px_rgba(0,0,0,0.35)]">
+        Book a Visit
+      </a>
     </div>
   </div>
+
+  <!-- Behavior -->
   <script is:inline>
+    const header = document.getElementById('siteHeader');
     const btn = document.getElementById('mobileMenuBtn');
     const menu = document.getElementById('mobileMenu');
+
+    const onScroll = () => {
+      if (window.scrollY > 20) {
+        // Glass/transparent on scroll
+        header.classList.add('bg-transparent', 'border-white/20');
+        header.classList.remove('bg-white/80', 'border-neutral-200');
+        header.classList.add('is-glass');
+      } else {
+        // Solid-ish at the very top
+        header.classList.remove('bg-transparent', 'border-white/20', 'is-glass');
+        header.classList.add('bg-white/80', 'border-neutral-200');
+      }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+
     if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
   </script>
+
+  <!-- Minimal styling to flip colors between solid vs glass states -->
+  <style is:inline>
+    /* Default (top of page, solid header): dark text, subtle borders */
+    .nav-pill { color: #1f2937; border-color: rgba(0,0,0,.18); background: rgba(255,255,255,.65); }
+    #siteHeader .siteBrand { color: #111; }
+    #siteHeader:not(.is-glass) .nav-pill:hover { background: rgba(255,255,255,.85); }
+
+    /* Glass state (scrolled): white text on transparent glass with stronger border */
+    #siteHeader.is-glass .nav-pill { color: rgba(255,255,255,.92); border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.06); backdrop-filter: blur(12px); }
+    #siteHeader.is-glass .nav-pill:hover { background: rgba(255,255,255,.12); }
+    #siteHeader.is-glass .siteBrand { color: #fff; }
+    #siteHeader.is-glass #mobileMenuBtn { color:#fff; border-color: rgba(255,255,255,.45); }
+
+    /* Mobile menu background adapts with state */
+    #siteHeader #mobileMenu { background: rgba(255,255,255,.85); border-color: rgba(0,0,0,.12); }
+    #siteHeader.is-glass #mobileMenu { background: rgba(0,0,0,.35); border-color: rgba(255,255,255,.2); backdrop-filter: blur(16px); }
+  </style>
 </header>

@@ -11,11 +11,45 @@ import BlogTeasers from "@/components/BlogTeasers.astro";
 ---
 <Base>
   <Header slot="header" />
-  <Hero />
-  <Services />
-  <Process />
-  <CalloutFee />
-  <ProjectsGrid />
-  <BlogTeasers />
+
+  <!-- Unified page container + spacing (desktop & mobile) -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Give space between sections. Extra bottom padding on mobile so sticky bar doesn't cover content -->
+    <div class="space-y-16 md:space-y-24 pb-24 md:pb-0">
+      <Hero />
+      <Services />
+      <Process />
+      <CalloutFee />
+
+      <!-- Lightweight materials/trust strip (inline, no new component) -->
+      <section class="rounded-xl border border-gray-200 bg-white shadow-sm p-4 sm:p-5">
+        <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-700">
+          <li class="px-3 py-1 rounded-full bg-gray-50 border">Laminate</li>
+          <li class="px-3 py-1 rounded-full bg-gray-50 border">Vinyl</li>
+          <li class="px-3 py-1 rounded-full bg-gray-50 border">Polished Concrete</li>
+          <li class="px-3 py-1 rounded-full bg-gray-50 border">Carpet Tiles</li>
+          <li class="px-3 py-1 rounded-full bg-gray-50 border">Repairs</li>
+        </ul>
+      </section>
+
+      <ProjectsGrid />
+      <BlogTeasers />
+    </div>
+  </div>
+
+  <!-- Sticky contact bar (mobile only) -->
+  <div class="fixed bottom-0 inset-x-0 z-50 md:hidden">
+    <div class="mx-auto max-w-7xl px-4 pb-3">
+      <div class="rounded-2xl shadow-lg border border-gray-200 bg-white p-3 grid grid-cols-2 gap-3">
+        <a href="tel:+27680757969" class="inline-flex items-center justify-center rounded-xl bg-[#B31217] text-white font-semibold py-3" aria-label="Call IC Flooring">
+          Call
+        </a>
+        <a href="mailto:ceo@icflooring.co.za" class="inline-flex items-center justify-center rounded-xl border border-gray-300 font-semibold py-3 text-gray-900" aria-label="Email IC Flooring">
+          Email
+        </a>
+      </div>
+    </div>
+  </div>
+
   <Footer slot="footer" />
 </Base>

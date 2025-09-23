@@ -1,15 +1,38 @@
 <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
   <h2 class="text-2xl md:text-3xl font-bold">From Our Blog</h2>
-  <div class="mt-8 grid gap-6 md:grid-cols-3">
+
+  <!-- 1 col (mobile), 2 (sm), 3 (md+) with consistent 16:9 thumbs -->
+  <div class="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
     {[
-      {title: "Epoxy vs PU: Which to choose?", href: "/blog/epoxy-vs-pu"},
-      {title: "Concrete prep 101", href: "/blog/concrete-prep"},
-      {title: "HACCP flooring for food plants", href: "/blog/haccp-flooring"}
+      { title: "Epoxy vs PU: Which to choose?", href: "/blog/epoxy-vs-pu",      img: "/images/ic-flooring-website (6).jpg" },
+      { title: "Concrete prep 101",             href: "/blog/concrete-prep",    img: "/images/ic-flooring-website (4).jpg" },
+      { title: "HACCP flooring for food plants", href: "/blog/haccp-flooring",  img: "/images/ic-flooring-website (3).jpg" }
     ].map(p => (
-      <a href={p.href} class="p-6 rounded-2xl border border-neutral-200 hover:shadow-soft transition block">
-        <div class="font-semibold">{p.title}</div>
-        <div class="mt-2 text-sm text-neutral-600">Read more →</div>
+      <a href={p.href} class="group block rounded-2xl border border-neutral-200 overflow-hidden bg-white hover:shadow-soft transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#B31217]">
+        <div class="relative w-full aspect-[16/9]">
+          {p.img ? (
+            <img
+              src={p.img}
+              alt={p.title}
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              loading="lazy"
+              decoding="async"
+              width="1280"
+              height="720"
+              sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+            />
+          ) : (
+            <div class="absolute inset-0 grid place-items-center bg-[linear-gradient(120deg,#e8e8e8,#f6f6f6)] text-neutral-500 text-sm">
+              Thumbnail coming soon
+            </div>
+          )}
+        </div>
+        <div class="p-6">
+          <div class="font-semibold">{p.title}</div>
+          <div class="mt-2 text-sm text-neutral-600">Read more →</div>
+        </div>
       </a>
     ))}
   </div>
 </section>
+

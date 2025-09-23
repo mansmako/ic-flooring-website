@@ -1,17 +1,66 @@
-<section id="process" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-  <h2 class="text-2xl md:text-3xl font-bold">Our Process</h2>
-  <div class="mt-8 grid gap-6 md:grid-cols-4">
-    {[
-      {step: '1', title: 'Site Visit', text: 'Assess substrate, traffic, chemicals, downtime.'},
-      {step: '2', title: 'Specification', text: 'We propose systems & finishes suitable for your use.'},
-      {step: '3', title: 'Installation', text: 'Surface prep, application, curing and QA.'},
-      {step: '4', title: 'Aftercare', text: 'Maintenance plan & warranty support.'},
-    ].map(s => (
-      <div class="p-6 rounded-2xl border border-neutral-200">
-        <div class="text-brand-red font-bold">{s.step}</div>
-        <div class="mt-2 font-semibold">{s.title}</div>
-        <p class="mt-2 text-sm text-neutral-600">{s.text}</p>
-      </div>
-    ))}
+<!-- OUTER WRAPPER: full-bleed background (image 9) + dark fade -->
+<div class="relative overflow-hidden">
+  <!-- Background (slight blur + dark gradient, spans full width) -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute inset-0 bg-cover bg-center scale-[1.06]"
+         style="background-image:url('/images/ic-flooring-website%20(9).jpg'); filter: blur(2px);"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/30"></div>
   </div>
-</section>
+
+  <!-- YOUR ORIGINAL SECTION (unchanged structure; heading gains text-white for contrast) -->
+  <section id="process" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+    <h2 class="text-2xl md:text-3xl font-bold text-white">Our Process</h2>
+
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        {
+          step: '1',
+          title: 'Site Visit & Advice',
+          text: 'We measure your rooms, check the subfloor & moisture, door clearances and transitions, and show samples.'
+        },
+        {
+          step: '2',
+          title: 'Specification & Quote',
+          text: 'We recommend laminate, vinyl or engineered wood with the right underlay, skirting and trims—then provide a clear line-item quote and schedule.'
+        },
+        {
+          step: '3',
+          title: 'Preparation & Installation',
+          text: 'Subfloor levelling/patching where needed, underlay fitted, planks/tiles installed neatly, and matching skirting/trims finished cleanly.'
+        },
+        {
+          step: '4',
+          title: 'Finishing & Aftercare',
+          text: 'Clean-down, inspection and handover. You get a care guide and warranty support for touch-ups or future repairs.'
+        }
+      ].map((s) => (
+        <div
+          class="relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 transition
+                 shadow-sm hover:shadow-2xl hover:shadow-black/30 group"
+        >
+          {/* red accent overlay on hover */}
+          <div class="pointer-events-none absolute inset-0 bg-brand-red/5 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></div>
+
+          {/* step badge */}
+          <div
+            class="relative inline-flex h-8 w-8 items-center justify-center rounded-full
+                   text-brand-red font-bold bg-brand-red/10
+                   transition-all duration-200 group-hover:scale-110 group-hover:bg-brand-red group-hover:text-white"
+          >
+            {s.step}
+          </div>
+
+          {/* title grows slightly + gains brand color on hover */}
+          <div class="relative mt-2 font-semibold text-base md:text-lg transition-all duration-200 group-hover:text-brand-red group-hover:text-[1.1rem] md:group-hover:text-[1.25rem]">
+            {s.title}
+          </div>
+
+          {/* body text darkens a touch on hover */}
+          <p class="relative mt-2 text-sm md:text-base text-neutral-600 transition-colors duration-200 group-hover:text-neutral-700">
+            {s.text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+</div>
