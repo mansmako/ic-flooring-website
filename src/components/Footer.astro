@@ -1,27 +1,39 @@
-<footer class="mt-24 border-t border-neutral-200">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid gap-6 md:grid-cols-3">
+---
+const year = new Date().getFullYear();
+---
+<footer class="mt-24 bg-black text-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-3">
     <div>
       <div class="font-semibold">IC Flooring</div>
-      <p class="text-sm text-neutral-600 mt-2">Industrial & commercial flooring: epoxy, polyurethane and polished concrete.</p>
+      <p class="text-sm text-white/80 mt-2">
+        Laminate, vinyl & real wood installations with proper subfloor prep and neat finishes.
+      </p>
     </div>
-    <div class="text-sm text-neutral-600">
-      <div class="font-medium text-neutral-800">Contact</div>
+
+    <div class="text-sm text-white/80">
+      <div class="font-medium text-white">Contact</div>
       <p class="mt-2">13 Arizona Crescent, Randburg, Gauteng</p>
-      <p>Tel: +27 68 075 7969</p>
-      <p>Email: <a class="underline" href="mailto:ceo@icflooring.co.za">ceo@icflooring.co.za</a></p>
+      <p>
+        Tel: <a href="tel:+27680757969" class="underline hover:opacity-90 text-white">+27 68 075 7969</a>
+      </p>
+      <p>
+        Email:
+        <a class="underline hover:opacity-90 text-white" href="mailto:info@icflooring.co.za">info@icflooring.co.za</a>
+      </p>
     </div>
-    <div class="text-sm text-neutral-600">
-      <div class="font-medium text-neutral-800">Quick Links</div>
+
+    <div class="text-sm text-white/80">
+      <div class="font-medium text-white">Quick Links</div>
       <ul class="mt-2 space-y-1">
-        <li><a class="hover:underline" href="/quote">Get a Quote</a></li>
-        <li><a class="hover:underline" href="/#process">Our Process</a></li>
-        <li><a class="hover:underline" href="/#callout">Call-out Fee</a></li>
-        <li><a class="hover:underline" href="/projects">Projects</a></li>
+        <li><a class="hover:underline text-white" href="/site-visit">Site Visit</a></li>
+        <li><a class="hover:underline text-white" href="/#process">Process</a></li>
+        <li><a class="hover:underline text-white" href="/projects">Projects</a></li>
+        <li><a class="hover:underline text-white" href="/blog">Blog</a></li>
       </ul>
     </div>
   </div>
-  <div class="text-xs text-neutral-500 border-t border-neutral-200 py-4 text-center">
-    © <span id="year"></span> IC Flooring. All rights reserved.
-    <script is:inline>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <div class="text-xs text-white/70 border-t border-white/10 py-4 text-center">
+    © {year} IC Flooring. All rights reserved. • blahblahblah SAS 2025
   </div>
 </footer>

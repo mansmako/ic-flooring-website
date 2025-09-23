@@ -32,18 +32,27 @@ const projects = [
     img: "/images/ic-flooring-website (5).jpg",
     href: "#"
   },
-  // You can add more; e.g. { ... , img: "/images/projects/your-photo.jpg", href: "#" }
 ];
 ---
 
-<section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-  <h2 class="text-2xl md:text-3xl font-bold">Projects</h2>
+<section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 bg-black">
+  <h2 class="text-2xl md:text-3xl font-bold text-white">Projects</h2>
 
   <!-- 1 col (mobile), 2 (sm), 3 (lg) -->
   <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {projects.map((p) => (
-      <a href={p.href} class="block rounded-2xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#B31217] group">
-        <div class="rounded-2xl border border-neutral-200 overflow-hidden bg-white hover:shadow-soft transition">
+      <a
+        href={p.href}
+        class="block rounded-2xl focus:outline-none
+               focus:ring-2 focus:ring-offset-2 focus:ring-white/70 focus:ring-offset-black
+               group"
+      >
+        <div
+          class="rounded-2xl border border-white/10 overflow-hidden bg-white transition
+                 hover:ring-2 hover:ring-white/70
+                 hover:shadow-[0_0_36px_rgba(255,255,255,0.35)] hover:-translate-y-0.5
+                 hover:scale-[1.01] will-change-transform"
+        >
           <!-- Fixed frame keeps uniform heights; image fills without distortion -->
           <div class="relative w-full aspect-[4/3] md:aspect-[3/2]">
             {p.img ? (
@@ -63,9 +72,9 @@ const projects = [
               </div>
             )}
 
-            <!-- Quick context chip -->
+            <!-- Context chip (dark glass for readability on images) -->
             <div class="absolute inset-x-0 bottom-0 p-3">
-              <span class="inline-flex items-center rounded-full bg-white/90 px-2 py-0.5 text-xs font-medium text-neutral-800">
+              <span class="inline-flex items-center rounded-full bg-black/60 backdrop-blur px-2 py-0.5 text-xs font-medium text-white">
                 {p.sector} • {p.year}
               </span>
             </div>
