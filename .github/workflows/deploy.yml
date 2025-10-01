@@ -1,0 +1,73 @@
+name: Build & Deploy to cPanel
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build (Astro)
+        run: npm run build
+
+      # If your server has rsync (most cPanel hosts do):
+      - name: Upload dist to new release (rsync)
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avzr --delete
+          path: dist/
+          remote_path: ${{ secrets.CPANEL_BASE }}/releases/${{ github.sha }}/
+          remote_host: ${{ secrets.CPANEL_HOST }}
+          remote_user: ${{ secrets.CPANEL_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # If rsync is NOT available on the server, replace the step above with this scp alternative:
+      # - name: Upload dist to new release (scp)
+      #   uses: appleboy/scp-action@v0.1.7
+      #   with:
+      #     host: ${{ secrets.CPANEL_HOST }}
+      #     username: ${{ secrets.CPANEL_USER }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     source: "dist/*"
+      #     target: "${{ secrets.CPANEL_BASE }}/releases/${{ github.sha }}/"
+
+      - name: Activate release (symlinks + prune)
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            RELEASE="${{ github.sha }}"
+            HOME_DIR="$HOME"
+
+            # Ensure directories exist
+            mkdir -p "$HOME_DIR/releases" "$HOME_DIR/shared"
+
+            # Point ~/current to this release
+            ln -sfn "$HOME_DIR/releases/$RELEASE" "$HOME_DIR/current"
+
+            # First time: convert public_html to symlink to current
+            if [ ! -L "$HOME_DIR/public_html" ]; then
+              if [ -d "$HOME_DIR/public_html" ]; then rm -rf "$HOME_DIR/public_html"; fi
+              ln -sfn "$HOME_DIR/current" "$HOME_DIR/public_html"
+            fi
+
+            # Keep only last 5 releases (oldest removed)
+            cd "$HOME_DIR/releases"
+            ls -1t | tail -n +6 | xargs -r rm -rf
